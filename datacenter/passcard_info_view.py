@@ -11,9 +11,9 @@ def passcard_info_view(request, passcode):
     this_passcard_visits = []
     for visit in visits:
         single_visit = {'entered_at': visit.entered_at,
-                     'duration': visit.leaved_at - visit.entered_at,
-                     'is_strange': visit.is_long()
-                     }
+                        'duration': visit.leaved_at - visit.entered_at,
+                        'is_strange': visit.is_long()
+                        }
         this_passcard_visits.append(single_visit)
     context = {
         'passcard': passcard,
