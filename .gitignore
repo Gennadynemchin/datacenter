@@ -1,4 +1,12 @@
 venv
 .env
 .idea
+Thumbs.db
+.DS_Store
+__pycache__
+*.pyc
+*.pyd
+*.pyo
+poetry.lock
+pyproject.toml
 settings.py
