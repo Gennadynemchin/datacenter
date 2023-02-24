@@ -1,13 +1,9 @@
-from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 from django.utils.timezone import localtime
-from django.shortcuts import get_object_or_404
 
 
 def storage_information_view(request):
-    get_object_or_404(Passcard, pk=1)
-    get_object_or_404(Visit, pk=1)
     non_closed_visits = []
     for user in Visit.objects.filter(leaved_at=None):
         non_closed_visit = {'who_entered': user.passcard,
