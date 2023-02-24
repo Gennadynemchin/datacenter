@@ -8,7 +8,7 @@ def storage_information_view(request):
     for user in Visit.objects.filter(leaved_at=None):
         non_closed_visit = {'who_entered': user.passcard,
                             'entered_at': localtime(user.entered_at),
-                            'duration': localtime() - localtime(user.entered_at),
+                            'duration': user.get_duration(),
                             'is_strange': user.is_long()
                             }
         non_closed_visits.append(non_closed_visit)

@@ -29,6 +29,10 @@ class Visit(models.Model):
             timediff = localtime() - localtime(self.entered_at)
             return timediff > timedelta(minutes=minutes)
 
+    def get_duration(self):
+        duration = localtime() - localtime(self.entered_at)
+        return duration
+
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
             user=self.passcard.owner_name,
