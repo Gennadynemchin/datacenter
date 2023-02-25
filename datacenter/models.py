@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import timedelta
 from django.utils.timezone import localtime
+import time
 
 
 class Passcard(models.Model):
@@ -33,10 +34,16 @@ class Visit(models.Model):
         duration = localtime() - localtime(self.entered_at)
         return duration
 
+    '''def format_duration(self, duration):
+        hours = duration.seconds // 3600
+        minutes = (duration.seconds // 60) % 60
+        return f'{hours}h {minutes}min'
+    '''
+
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
             user=self.passcard.owner_name,
             entered=self.entered_at,
             leaved=(f'leaved at {self.leaved_at}'
                     if self.leaved_at else 'not leaved')
-            )
+        )
