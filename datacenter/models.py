@@ -22,6 +22,15 @@ class Visit(models.Model):
     entered_at = models.DateTimeField()
     leaved_at = models.DateTimeField(null=True)
 
+    def get_duration(self):
+        duration = localtime() - localtime(self.entered_at)
+        return duration
+
+    def format_duration(self, duration):
+        hours = duration.seconds // 3600
+        minutes = (duration.seconds // 60) % 60
+        return f'{hours}h {minutes}min'
+
     def is_long(self, minutes=60):
         if self.leaved_at is not None:
             timediff = localtime(self.leaved_at) - localtime(self.entered_at)
@@ -29,16 +38,6 @@ class Visit(models.Model):
         else:
             timediff = localtime() - localtime(self.entered_at)
             return timediff > timedelta(minutes=minutes)
-
-    def get_duration(self):
-        duration = localtime() - localtime(self.entered_at)
-        return duration
-
-    '''def format_duration(self, duration):
-        hours = duration.seconds // 3600
-        minutes = (duration.seconds // 60) % 60
-        return f'{hours}h {minutes}min'
-    '''
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
