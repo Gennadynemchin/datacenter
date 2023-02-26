@@ -2,6 +2,7 @@ from django.db import models
 from datetime import timedelta
 from django.utils.timezone import localtime
 import time
+from datetime import datetime
 
 
 class Passcard(models.Model):
@@ -36,8 +37,7 @@ class Visit(models.Model):
             timediff = localtime(self.leaved_at) - localtime(self.entered_at)
             return timediff > timedelta(minutes=minutes)
         else:
-            timediff = localtime() - localtime(self.entered_at)
-            return timediff > timedelta(minutes=minutes)
+            return self.get_duration() > timedelta(minutes=minutes)
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
