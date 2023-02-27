@@ -1,8 +1,6 @@
 from django.db import models
 from datetime import timedelta
 from django.utils.timezone import localtime
-import time
-from datetime import datetime
 
 
 class Passcard(models.Model):
