@@ -9,4 +9,3 @@ __pycache__
 *.pyo
 poetry.lock
 pyproject.toml
-settings.py
