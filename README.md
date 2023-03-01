@@ -22,6 +22,7 @@ PORT=<Requested port>
 NAME=<DB name>
 USER=<Username>
 PASSWORD=<DB password>
+SECRET_KEY=<SECRET_KEY>
 DEBUG_STATUS=False
 ```
 Then save and rename to .env
